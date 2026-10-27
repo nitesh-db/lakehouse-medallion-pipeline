@@ -1,0 +1,30 @@
+bundle:
+  name: lakehouse-medallion-pipeline
+
+variables:
+  catalog:
+    description: Unity Catalog catalog to write into
+    default: main
+  schema:
+    description: Schema for this environment's tables
+    default: medallion_dev
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: ${DATABRICKS_HOST}
+    variables:
+      schema: medallion_dev
+
+  prod:
+    mode: production
+    workspace:
+      host: ${DATABRICKS_HOST}
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      schema: medallion_prod
