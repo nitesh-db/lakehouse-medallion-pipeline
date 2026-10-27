@@ -72,23 +72,6 @@ Add `DATABRICKS_HOST` and `DATABRICKS_TOKEN` as secrets in GitHub environments n
 
 `bronze_trips`, `silver_trips`, `quarantine_trips`, `gold_daily_pickup_zone` in `<catalog>.<schema>`.
 
-## Getting Recruiters' Attention
-
-When sharing this repo, highlight:
-
-1. **In your resume/LinkedIn:**
-   - "Built a medallion architecture pipeline solving 9 production data-engineering problems: late-arriving data, idempotent processing, revenue reconciliation, GDPR compliance, PII masking, data quality, clickstream sessionization, SCD2 dimensions, and cost optimization."
-   - "Implemented Delta Lake MERGE strategies for event deduplication and timestamp-aware upserts; built DQ framework with 20+ checks and auto-suspend logic."
-
-2. **In interview discussions:**
-   - Walk through the "9 Problems Solved" table above; each one is a conversation starter.
-   - Explain the trade-offs: why quarantine bad data instead of dropping it? Why SCD2 over SCD1 for dimensions?
-   - Discuss incremental processing: how to skip work when no new data arrives (cost savings).
-
-3. **In the README (this repo):**
-   - The table clearly maps each problem to code, so reviewers can drill into implementations quickly.
-   - All solutions are pure PySpark functions—unit-testable on a laptop, production-ready on Databricks.
-
 ## Roadmap
 
 - [ ] Incremental silver and gold with `MERGE` (ready in `incremental_merge_on_new_data()`)
